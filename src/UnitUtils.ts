@@ -15,7 +15,7 @@ export class UnitUtils {
     private constructor() {}
 
     public static getUnitType(unit: Unit): UnitType {
-        let type: UnitType = null;
+        let type: UnitType;
 
         if (AREA.indexOf(unit) > -1) {
             type = UnitType.AREA;

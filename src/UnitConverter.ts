@@ -1,14 +1,12 @@
 
-import {
-    Unit
-} from './Unit';
+import {Unit} from './Unit';
 import Math from './Math';
 
 export class UnitConverter {
     private constructor() {}
 
     public static convert(value: number, from: Unit, to: Unit, precision?: number): number {
-        let result: number = null;
+        let result: number;
 
         if (value !== null && from !== to) {
             switch (from) {
@@ -90,7 +88,7 @@ export class UnitConverter {
                 case Unit.PER_METER:
                     result = UnitConverter.$fromPerMeter(value, to);
                     break;
-                default: this.$throwNotSupportedFromUnit();
+                default: throw this.$createNotSupportedFromUnit();
             }
         }
         else {
@@ -105,59 +103,59 @@ export class UnitConverter {
     }
 
     private static $fromPerFoot(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.PER_METER:
                 result = value * 3.2808398950
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromPerMeter(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.PER_FOOT:
                 result = value / 3.2808398950;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromPerFootSq(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.PER_METER_SQUARED:
                 result = value * 10.76391
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromPerMeterSq(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.PER_FOOT_SQUARED:
                 result = value / 10.76391;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromMillimeter(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.FOOT:
@@ -184,14 +182,14 @@ export class UnitConverter {
             case Unit.YARD:
                 result = value * 0.0010936132;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromCentimeter(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.FOOT:
@@ -218,14 +216,14 @@ export class UnitConverter {
             case Unit.YARD:
                 result = value * 0.0109361329;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromInch(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.FOOT:
@@ -252,14 +250,14 @@ export class UnitConverter {
             case Unit.YARD:
                 result = value * 0.0277777777;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromYard(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.FOOT:
@@ -286,14 +284,14 @@ export class UnitConverter {
             case Unit.METER:
                 result = value * 0.9144;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromNauticalMile(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.FOOT:
@@ -320,14 +318,14 @@ export class UnitConverter {
             case Unit.YARD:
                 result = value * 2025.372;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromRadian(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.MILLIMETER:
@@ -360,53 +358,53 @@ export class UnitConverter {
             case Unit.DEGREE:
                 result = (value % (2 * Math.PI)) * 180 / Math.PI;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromDegree(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.RADIAN:
                 result = (value % 360) * Math.PI / 180;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromMeterOverKilometer(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.INCH_OVER_MILE:
                 result = value * 63.36005;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromInchOverMile(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.METER_OVER_KILOMETER:
                 result = value / 63.36005;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromYardSquared(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number ;
 
         switch (to) {
             case Unit.CENTIMETER_SQUARED:
@@ -433,14 +431,14 @@ export class UnitConverter {
             case Unit.NAUTICAL_MILE_SQUARED:
                 result = value * 2.4346237458194e-7;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromKilometer(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.MILLIMETER:
@@ -467,14 +465,14 @@ export class UnitConverter {
             case Unit.NAUTICAL_MILE:
                 result = value * 0.5399568034;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromMeter(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.FOOT:
@@ -501,14 +499,14 @@ export class UnitConverter {
             case Unit.YARD:
                 result = value * 1.0936132983;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromMile(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.MILLIMETER:
@@ -535,14 +533,14 @@ export class UnitConverter {
             case Unit.NAUTICAL_MILE:
                 result = value * 0.8689762419;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromMillimeterSquared(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.CENTIMETER_SQUARED:
@@ -569,14 +567,14 @@ export class UnitConverter {
             case Unit.NAUTICAL_MILE_SQUARED:
                 result = value * 2.91181e-13;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromCentimeterSquared(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.MILLIMETER_SQUARED:
@@ -603,14 +601,14 @@ export class UnitConverter {
             case Unit.NAUTICAL_MILE_SQUARED:
                 result = value * 2.91181e-11;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromMeterSquared(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.MILLIMETER_SQUARED:
@@ -637,14 +635,14 @@ export class UnitConverter {
             case Unit.NAUTICAL_MILE_SQUARED:
                 result = value * 2.91181e-7;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromKilometerSquared(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.MILLIMETER_SQUARED:
@@ -671,14 +669,14 @@ export class UnitConverter {
             case Unit.NAUTICAL_MILE_SQUARED:
                 result = value * 0.291181;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromInchSquared(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.MILLIMETER_SQUARED:
@@ -705,14 +703,14 @@ export class UnitConverter {
             case Unit.NAUTICAL_MILE_SQUARED:
                 result = value * 1.8785833396075e-10;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromMileSquared(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.MILLIMETER_SQUARED:
@@ -739,14 +737,14 @@ export class UnitConverter {
             case Unit.NAUTICAL_MILE_SQUARED:
                 result = value * 0.75415532795574;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromNauticalMileSquared(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.MILLIMETER_SQUARED:
@@ -773,14 +771,14 @@ export class UnitConverter {
             case Unit.CENTIMETER_SQUARED:
                 result = value * 34342900120.544;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromFoot(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.MILLIMETER:
@@ -807,14 +805,14 @@ export class UnitConverter {
             case Unit.NAUTICAL_MILE:
                 result = value * 0.0001645788;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
     private static $fromFootSquared(value: number, to: Unit): number {
-        let result: number = null;
+        let result: number;
 
         switch (to) {
             case Unit.MILLIMETER_SQUARED:
@@ -841,17 +839,17 @@ export class UnitConverter {
             case Unit.CENTIMETER_SQUARED:
                 result = value * 929.03043596611;
                 break;
-            default: this.$throwNotSupportedToUnit();
+            default: throw this.$createNotSupportedToUnit();
         }
 
         return result;
     }
 
-    private static $throwNotSupportedFromUnit(): void {
-        throw new Error('Not supported "From" unit. Looks like we have a PR to make :)');
+    private static $createNotSupportedFromUnit(): Error {
+        return new Error('Not supported "From" unit. Looks like we have a PR to make :)');
     }
 
-    private static $throwNotSupportedToUnit(): void {
-        throw new Error('Not supported "To" unit. Looks like we have a PR to make :)');
+    private static $createNotSupportedToUnit(): Error {
+        return new Error('Not supported "To" unit. Looks like we have a PR to make :)');
     }
 }

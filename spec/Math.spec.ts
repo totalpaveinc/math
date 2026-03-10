@@ -558,7 +558,8 @@ describe('Math', () => {
             expect(TPMath.cbrt(123)).toBe(Math.cbrt(123));
         });
 
-        (Math.f16round ? it : xit)('f16round', () => {
+        ((Math as any).f16round ? it : xit)('f16round', () => { // strict null checks forbids null-guarding any thing declared as non-null
+                                                                // but f16round is a relatively new API so it could very well be undefined in actual runtime.
             expect(TPMath.f16round(1.12345)).toBe(Math.f16round(1.12345));
         });
     });

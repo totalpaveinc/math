@@ -32,9 +32,9 @@
   "homepage": "https://github.com/totalpave/math#readme",
   "devDependencies": {
     "@jest/types": "30.4.1",
-    "@totalpave/eslint-plugin": "7.1.1",
+    "@totalpave/eslint-plugin": "7.1.2",
     "@types/jest": "30.0.0",
-    "@types/node": "26.1.2",
+    "@types/node": "26.2.0",
     "auto-changelog": "2.6.0",
     "jest": "30.4.2",
     "ts-jest": "29.4.12",

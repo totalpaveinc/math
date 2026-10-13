@@ -3,7 +3,8 @@
     "compilerOptions": {
         "outDir": "./spec",
         "declaration": false,
-        "sourceMap": false
+        "sourceMap": false,
+        "types": ["node", "jest"],
     },
     "include": [
         "./**/*.ts",

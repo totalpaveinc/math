@@ -1,10 +1,13 @@
 
-import type {Config} from '@jest/types';
+import {createDefaultPreset, type JestConfigWithTsJest} from 'ts-jest';
 
-export const JEST_CONFIG: Config.InitialOptions = {
-    preset: 'ts-jest',
+export const JEST_CONFIG: JestConfigWithTsJest = {
+    ...createDefaultPreset({
+        tsconfig: '<rootDir>/spec/tsconfig.json'
+    }),
     verbose: false,
-    collectCoverage: true
+    collectCoverage: true,
+    
 };
 
 export default JEST_CONFIG;

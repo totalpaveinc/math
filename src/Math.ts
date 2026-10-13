@@ -20,7 +20,7 @@ class TPMath implements Math {
     public SQRT2: number            = native.SQRT2;
     public EARTH_RADIUS: number     = 6371008.8;
     
-    [Symbol.toStringTag]: string;
+    public readonly [Symbol.toStringTag]: string = native[Symbol.toStringTag];
 
     public abs(x: number): number {
         return native.abs(x);

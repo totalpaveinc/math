@@ -1173,9 +1173,9 @@ describe('UnitConverter', () => {
                                 expect(diff).toBeGreaterThanOrEqual(-THRESHOLD);
                                 expect(diff).toBeLessThanOrEqual(THRESHOLD);
                             }
-                            catch (ex) {
-                                if (!/Not supported/.test(ex.toString())) {
-                                    fail(ex);
+                            catch (ex: unknown) {
+                                if (!(ex instanceof Error) || !/Not supported/.test(ex.message)) {
+                                    throw ex;
                                 }
                             }
                         });

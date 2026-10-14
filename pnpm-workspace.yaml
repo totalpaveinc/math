@@ -2,6 +2,9 @@ allowBuilds:
   '@parcel/watcher': true
   unrs-resolver: true
 
+minimumReleaseAgeExclude:
+  - typedoc-plugin-markdown@4.14.0
+
 onlyBuiltDependencies:
   - unrs-resolver
 

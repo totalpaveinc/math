@@ -4,7 +4,7 @@
         "outDir": "./spec",
         "declaration": false,
         "sourceMap": false,
-        "types": ["node", "jest"],
+        "types": ["jest"]
     },
     "include": [
         "./**/*.ts",
